@@ -1,7 +1,6 @@
 import torch
-from simple_cnn import SimpleCNN
 from modeltrace.core.inspector import ModelInspector
-from modeltrace.core.metrics import activation_sparsity
+from simple_cnn import SimpleCNN
 
 model = SimpleCNN()
 inspector = ModelInspector(model)
