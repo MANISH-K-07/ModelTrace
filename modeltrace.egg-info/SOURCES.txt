@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+modeltrace/__init__.py
+modeltrace.egg-info/PKG-INFO
+modeltrace.egg-info/SOURCES.txt
+modeltrace.egg-info/dependency_links.txt
+modeltrace.egg-info/top_level.txt
+modeltrace/core/__init__.py
+modeltrace/core/hooks.py
+modeltrace/core/inspector.py
+modeltrace/core/metrics.py
+tests/test_hooks.py
