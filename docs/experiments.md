@@ -1,5 +1,7 @@
 # Experiments in ModelTrace
 
+---
+
 ## Experiment 1: Sparsity Analysis
 - Detects unused weights in convolutional and fully-connected layers.
 - Provides insights for model pruning and optimization.

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ModelTrace Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        h2, h3 {
+            color: #333;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            overflow-x: auto;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ModelTrace Documentation</h1>
+    <p>Research-grade ML Model Inspector, Debugger & Robustness Analyzer</p>
+</header>
+
+<nav>
+    <a href="https://github.com/MANISH-K-07/ModelTrace/blob/main/README.md">README</a>
+</nav>
+
+<nav>
+    <a href="https://github.com/MANISH-K-07/ModelTrace/blob/main/docs/documentation.md">Documentation</a>
+    <a href="https://github.com/MANISH-K-07/ModelTrace/blob/main/docs/experiments.md">Experiments</a>
+    <a href="https://github.com/MANISH-K-07/ModelTrace/blob/main/docs/api_reference.md">API Reference</a>
+</nav>
+
+<main>
+    <h2>Welcome to ModelTrace</h2>
+    <p>
+        ModelTrace is a research-oriented framework for analyzing, debugging, and evaluating machine learning models.
+    </p>
+    <p>Use the links above to explore:</p>
+
+    <ul>
+        <li><strong>Documentation:</strong> Overview, working process, future work, and academic relevance.</li>
+        <li><strong>Experiments:</strong> All eight experiments with methodology.</li>
+        <li><strong>API Reference:</strong> ModelInspector class and methods.</li>
+        <li><strong>README:</strong> Installation, usage, folder structure, and example outputs.</li>
+    </ul>
+
+    <h2>Quick Start</h2>
+    <pre><code>git clone https://github.com/MANISH-K-07/ModelTrace.git
+cd ModelTrace
+pip install -r requirements.txt
+python setup.py install
+</code></pre>
+<pre><code># Run all experiments
+python examples/run_all_experiments.py
+</code></pre>
+
+    <h2>Example Output</h2>
+    <pre><code>
+============================================
+     Running ALL ModelTrace Experiments
+============================================
+
+[Experiment 1] Sparsity Analysis
+Conv sparsity (avg): 0.0000
+FC sparsity (avg):   0.0000
+--------------------------------------------
+
+[Experiment 2] Activation Statistics
+conv1: mean=-0.0926, std=0.6074, max=1.5994
+conv2: mean=0.0355, std=0.2371, max=0.8379
+fc: mean=0.0229, std=0.1267, max=0.1856
+--------------------------------------------
+
+[Experiment 3] Distribution Shift Test
+Normal mean activation magnitude:  0.2797
+Shifted mean activation magnitude: 0.3642
+--------------------------------------------
+
+[Experiment 4] Activation Drift
+Drift score: 0.1093
+--------------------------------------------
+
+[Experiment 5] Model Regression Test
+Regression drift score: 0.3458
+--------------------------------------------
+
+[Experiment 6] Layer Sensitivity Analysis
+conv1: sensitivity=0.1984
+conv2: sensitivity=0.0725
+fc: sensitivity=0.0292
+--------------------------------------------
+
+[Experiment 7] Failure Attribution
+Output shift magnitude: 0.0257
+Layer-wise contribution:
+conv1: 0.6609
+conv2: 0.2325
+fc: 0.1066
+--------------------------------------------
+
+[Experiment 8] Model Robustness Score
+FINAL ROBUSTNESS SCORE: 0.0646
+--------------------------------------------
+
+✅ All experiments completed successfully.
+    </code></pre>
+
+    <h2>Author</h2>
+    <p>
+        Manish Krishna Kandrakota – Final year B.Tech CSE student at Sreenidhi Institute of Science and Technology, Hyderabad.<br>
+        GitHub: <a href="https://github.com/MANISH-K-07">https://github.com/MANISH-K-07</a>
+    </p>
+</main>
+
+<footer>
+    &copy; 2025 MANISH-K-07 | MIT License
+</footer>
+
+</body>
+</html>
