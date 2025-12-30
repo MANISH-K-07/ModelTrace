@@ -1,20 +1,58 @@
 # ModelTrace
 
-**ModelTrace** is a research-grade framework for inspecting, debugging, and stress-testing machine learning models.  
-It provides tools to analyze model sparsity, activations, distribution shifts, layer sensitivity, drift, and robustness metrics.
+**ModelTrace** is a research-grade framework for inspecting, debugging, and stress-testing machine learning models.
+It provides tools to analyze model sparsity, activations, distribution shifts, layer sensitivity, drift, and robustness metrics — helping researchers and practitioners understand **how models behave under different inputs and perturbations**.
 
 ---
 
-## Features
+## Motivation & Academic Relevance
 
-- ✅ Sparsity Analysis (Conv & FC layers)  
-- ✅ Activation Statistics (mean, std, max)  
-- ✅ Distribution Shift Stress Test  
-- ✅ Activation Drift  
-- ✅ Cross-Model Regression  
-- ✅ Layer Sensitivity Analysis  
-- ✅ Failure Attribution  
-- ✅ Model Robustness Score  
+Debugging and analyzing ML models is a critical research problem, especially for deep learning systems where failures are often **non-intuitive and hard to trace**.
+ModelTrace addresses this by providing **quantitative metrics and structured analysis** of model internals:
+
+- Layer-wise sparsity and activation statistics
+- Sensitivity of layers to input perturbations
+- Drift and robustness metrics
+- Cross-model regression and failure attribution
+
+This framework aligns with research topics in **ML reliability, interpretability, and model debugging**, showcasing **research-level problem-solving skills**.
+
+---
+
+## Key Features
+
+| Feature | Description |
+|---------|-------------|
+| Sparsity Analysis | Detect unused weights in convolutional and fully-connected layers |
+| Activation Statistics | Compute mean, std, and max of layer activations |
+| Distribution Shift Test | Simulate input perturbations and evaluate activation changes |
+| Activation Drift | Measure sensitivity between different input sets |
+| Cross-Model Regression | Compare activations between two models for regression drift |
+| Layer Sensitivity | Identify layers most critical to output changes |
+| Failure Attribution | Quantify each layer's contribution to output shifts |
+| Model Robustness Score | Aggregate robustness metric combining drift, sensitivity, and distribution shift |
+
+---
+
+## ModelTrace Working Process
+
+```
+Input Model → Activation Hook Registration → Forward Pass →
+Compute Metrics:
+     - Sparsity
+     - Activation Statistics
+     - Distribution Shift
+     - Activation Drift
+     - Cross-Model Regression
+     - Layer Sensitivity
+     - Failure Attribution
+     - Robustness Score
+→ Results
+```
+
+- All experiments are implemented in the **ModelInspector API**.
+- Activations are captured via **forward hooks**.
+- Metrics are computed in a **modular and extensible manner**, allowing easy extension for new experiments.
 
 ---
 
@@ -27,10 +65,8 @@ pip install -r requirements.txt
 python setup.py install
 ```
 
----
-
 ## Usage
-### Import API
+### Using the ModelInspector API
 
 ```python
 from modeltrace.core.inspector import ModelInspector
@@ -127,3 +163,28 @@ ModelTrace/
 ├── requirements.txt
 └── setup.py
 ```
+
+---
+
+## Limitations
+
+- Supports **only PyTorch models** currently.
+- Examples use small CNNs; large models may require adaptation.
+- Drift and robustness metrics are **heuristic-based**; could be extended with more sophisticated statistical methods.
+- No support yet for **real-world large-scale datasets or production pipelines**.
+
+---
+
+## Future Enhancements
+
+- Extend support to **transformers and large CNNs**.
+- Add **visualizations** (activation heatmaps, drift plots).
+- Enable **automatic pruning or retraining suggestions** based on metrics.
+- Support additional frameworks (e.g., **TensorFlow, ONNX**).
+- Implement **CLI with argument parsing** for selective experiment runs.
+
+---
+
+## License
+
+This project is open-source and available under the MIT License.
