@@ -9,7 +9,7 @@ class ModelInspector:
         self.model = model
         self.model.eval()
 
-        # ONE hook system, reused everywhere
+        # Single shared hook system
         self.hook = ActivationHook()
         self.hook.register(self.model)
 
@@ -22,7 +22,7 @@ class ModelInspector:
 
         stats = {}
         for name, module in self.model.named_modules():
-            if hasattr(module, "weight"):
+            if hasattr(module, "weight") and module.weight is not None:
                 weight = module.weight.detach().cpu()
                 stats[name] = (weight == 0).float().mean().item()
 
@@ -45,6 +45,7 @@ class ModelInspector:
                 "std": act.std().item(),
                 "max": act.max().item(),
             }
+
         return stats
 
     # =====================================
@@ -91,5 +92,36 @@ class ModelInspector:
         for k in acts_a:
             if k in acts_b:
                 drift.append((acts_a[k] - acts_b[k]).abs().mean().item())
+
+        return float(np.mean(drift)) if drift else 0.0
+
+    # ==================================
+    # Experiment 5: Cross-Model Regression
+    # ==================================
+    def compute_model_regression(self, input_tensor, other_inspector):
+        """
+        Compare activations between two models on the same input.
+        """
+
+        # Run self model
+        self.hook.activations.clear()
+        with torch.no_grad():
+            _ = self.model(input_tensor)
+        activations_self = {
+            k: v.clone() for k, v in self.hook.activations.items()
+        }
+
+        # Run other model
+        other_inspector.hook.activations.clear()
+        with torch.no_grad():
+            _ = other_inspector.model(input_tensor)
+        activations_other = other_inspector.hook.activations
+
+        drift = []
+        for layer in activations_self:
+            if layer in activations_other:
+                a1 = activations_self[layer]
+                a2 = activations_other[layer]
+                drift.append((a1 - a2).abs().mean().item())
 
         return float(np.mean(drift)) if drift else 0.0
