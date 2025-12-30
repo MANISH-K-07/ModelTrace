@@ -1,3 +1,5 @@
+# ModelTrace
+
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-Compatible-red)
 ![Status](https://img.shields.io/badge/Status-Research--Grade-orange)
@@ -5,7 +7,6 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 [![GitHub Pages](https://img.shields.io/badge/demo-GitHub%20Pages-brightgreen)](https://manish-k-07.github.io/ModelTrace/)
 
-# ModelTrace
 
 **ModelTrace** is a research-grade framework for inspecting, debugging, and stress-testing machine learning models.
 It provides tools to analyze model sparsity, activations, distribution shifts, layer sensitivity, drift, and robustness metrics — helping researchers and practitioners understand **how models behave under different inputs and perturbations**.
