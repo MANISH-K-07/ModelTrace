@@ -11,8 +11,9 @@ def main():
 
     drift = inspector.compute_drift(normal_input, shifted_input)
 
-    print("=== Activation Drift Score ===")
+    print("=== Activation Drift Score ===\n")
     print(f"Drift score: {drift:.4f}")
+    print("")
 
 if __name__ == "__main__":
     main()

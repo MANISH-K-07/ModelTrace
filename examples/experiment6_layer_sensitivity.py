@@ -12,9 +12,10 @@ def main():
 
     sensitivity = inspector.layer_sensitivity(x, x_shifted)
 
-    print("=== Layer Sensitivity Analysis ===")
+    print("=== Layer Sensitivity Analysis ===\n")
     for layer, delta in sensitivity.items():
         print(f"{layer}: sensitivity={delta:.4f}")
+    print("")
 
 
 if __name__ == "__main__":

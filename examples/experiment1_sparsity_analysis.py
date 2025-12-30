@@ -15,9 +15,10 @@ def main():
         conv_vals.append(conv_s)
         fc_vals.append(fc_s)
 
-    print("=== Sparsity Analysis ===")
+    print("=== Sparsity Analysis ===\n")
     print(f"Conv layer sparsity across batch: {sum(conv_vals)/len(conv_vals)}")
     print(f"FC layer sparsity across batch: {sum(fc_vals)/len(fc_vals)}")
+    print("")
 
 if __name__ == "__main__":
     main()

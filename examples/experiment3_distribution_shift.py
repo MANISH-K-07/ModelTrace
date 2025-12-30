@@ -13,9 +13,10 @@ def main():
         normal_input, shifted_input
     )
 
-    print("=== Distribution Shift Stress Test ===")
+    print("=== Distribution Shift Stress Test ===\n")
     print(f"Normal mean activation magnitude: {normal_mag:.4f}")
     print(f"Shifted mean activation magnitude: {shifted_mag:.4f}")
+    print("")
 
 if __name__ == "__main__":
     main()

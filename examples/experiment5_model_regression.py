@@ -22,8 +22,9 @@ def main():
         other_inspector=inspector_v2
     )
 
-    print("=== Model Regression Test ===")
+    print("=== Model Regression Test ===\n")
     print(f"Regression drift score: {drift:.4f}")
+    print("")
 
 if __name__ == "__main__":
     main()

@@ -9,11 +9,12 @@ def main():
     dummy_input = torch.randn(1, 1, 8, 8)
     stats = inspector.inspect_activations(dummy_input)
 
-    print("=== Activation Statistics ===")
+    print("=== Activation Statistics ===\n")
     for layer, s in stats.items():
         print(
             f"{layer}: mean={s['mean']:.4f}, std={s['std']:.4f}, max={s['max']:.4f}"
         )
+    print("")
 
 if __name__ == "__main__":
     main()
