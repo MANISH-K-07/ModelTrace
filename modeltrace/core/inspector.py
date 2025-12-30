@@ -125,3 +125,31 @@ class ModelInspector:
                 drift.append((a1 - a2).abs().mean().item())
 
         return float(np.mean(drift)) if drift else 0.0
+
+    # =====================================
+    # Experiment 6: Layer Sensitivity Analysis
+    # =====================================
+    def layer_sensitivity(self, input_a, input_b):
+        self.hook.activations.clear()
+        with torch.no_grad():
+            _ = self.model(input_a)
+
+        acts_a = {
+            k: v.clone() for k, v in self.hook.activations.items()
+        }
+
+        self.hook.activations.clear()
+        with torch.no_grad():
+            _ = self.model(input_b)
+
+        acts_b = self.hook.activations
+
+        sensitivity = {}
+        for layer in acts_a:
+            if layer in acts_b:
+                sensitivity[layer] = (
+                    acts_a[layer] - acts_b[layer]
+                ).abs().mean().item()
+
+        return sensitivity
+
